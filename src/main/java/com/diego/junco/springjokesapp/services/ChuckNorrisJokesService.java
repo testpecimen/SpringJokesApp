@@ -1,6 +1,7 @@
 package com.diego.junco.springjokesapp.services;
 
 import guru.springframework.norris.chuck.ChuckNorrisQuotes;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -10,11 +11,13 @@ import org.springframework.stereotype.Service;
 public class ChuckNorrisJokesService implements JokesService {
     private final ChuckNorrisQuotes chuckNorrisQuotes;
 
-    public ChuckNorrisJokesService() {
-        this.chuckNorrisQuotes = new ChuckNorrisQuotes();
+    @Autowired
+    public ChuckNorrisJokesService(ChuckNorrisQuotes chuckNorrisQuotes) {
+        this.chuckNorrisQuotes = chuckNorrisQuotes;
     }
 
     @Override
+
     public String getJoke() {
         return chuckNorrisQuotes.getRandomQuote();
     }
